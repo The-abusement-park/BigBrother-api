@@ -16,9 +16,9 @@ class CreateItemTable extends Migration
         Schema::create('item', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string("name");
-            $table->string("serialcode");
-            $table->string("note");
-            $table->unsignedBigInteger('user_id');
+            $table->string("serialcode")->nullable();
+            $table->string("note")->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
