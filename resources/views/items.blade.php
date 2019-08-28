@@ -87,7 +87,7 @@
                 type: 'PUT',
                 url: window.location.origin + '/api/items/' + id,
                 data: {
-                    'user_id': 1
+                    'user_id': getUserId()
                 },
                 success: () => {
                     window.location.reload();

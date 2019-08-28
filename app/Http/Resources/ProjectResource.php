@@ -9,7 +9,7 @@ class ProjectResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
@@ -19,7 +19,7 @@ class ProjectResource extends JsonResource
             'name' => $this->name,
             'number' => $this->number,
             'description' => $this->description,
-            'users' => $this->whenLoaded("users"),
+//            'users' => $this->whenLoaded("users"),
         ];
     }
 }

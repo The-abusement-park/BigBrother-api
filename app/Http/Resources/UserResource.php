@@ -20,10 +20,9 @@ class UserResource extends JsonResource
             'email' => $this->email,
             'phone' => $this->phone,
             'role' => $this->role,
-            'item' => $this->whenLoaded($this->item()),
-            'location' => $this->whenLoaded($this->location()),
+//            'item' => $this->whenLoaded($this->item()),
+//            'location' => $this->whenLoaded($this->location()),
+//            'project' => $this->whenLoaded($this->project()),
         ];
-
-
     }
 }

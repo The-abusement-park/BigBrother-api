@@ -9,7 +9,7 @@ class LocationResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
@@ -18,7 +18,7 @@ class LocationResource extends JsonResource
             'id' => $this->id,
             'building' => $this->building,
             'room' => $this->room,
-            'user' => $this->whenLoaded("user"),
+//            'user' => $this->whenLoaded("user"),
         ];
     }
 }
