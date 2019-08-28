@@ -18,7 +18,7 @@ class ItemResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'serialcode' => $this->serialcode,
-            'user' => $this->user(),
+            'user' => $this->whenLoaded("user"),
         ];
     }
 }
