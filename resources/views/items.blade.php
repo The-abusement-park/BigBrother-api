@@ -16,7 +16,7 @@
             <td><input id="new_code"></td>
             <td><input id="new_note"></td>
             <td>
-                <button onclick="addNewItem()">Toevoegen</button>
+                <button onclick="addNewItem()" class="btn btn-success">Toevoegen</button>
             </td>
         </tr>
         </tbody>

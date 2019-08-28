@@ -14,7 +14,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'location_id', 'role',
+        'name', 'email', 'password', 'phone', 'location_id', 'project_id', 'role',
     ];
 
     /**
@@ -26,19 +26,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-    public function item(){
+    public function item()
+    {
         return $this->hasOne(Item::class);
     }
 
-    public function location(){
-        return $this->belongsTo(Location::class, 'location_id');
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
     }
 }

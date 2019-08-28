@@ -18,6 +18,8 @@ class UserUpdateRequest extends FormRequest
             "email" => "sometimes|email",
             "password" => "sometimes",
             "phone" => "sometimes",
+            "location_id" => "sometimes",
+            "project_id" => "sometimes"
         ];
     }
 }

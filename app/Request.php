@@ -20,7 +20,8 @@ class Request extends Model
     /**
      * Get the user from the request.
      */
-    public function user(){
-        $this->hasOne(User::class, 'user_id');
+    public function user()
+    {
+        return $this->hasOne(User::class, 'user_id');
     }
 }

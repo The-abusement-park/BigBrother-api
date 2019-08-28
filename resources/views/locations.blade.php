@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    {{--TODO START Check if the user is admin--}}
     <table class="table">
         <thead>
         <tr>
@@ -16,17 +17,18 @@
             <td><input id="new_building"></td>
             <td><input id="new_room"></td>
             <td>
-                <button onclick="addNewLocation()">Toevoegen</button>
+                <button onclick="addNewLocation()" class="btn btn-success">Toevoegen</button>
             </td>
         </tr>
         </tbody>
     </table>
+    {{--END Check if the user is admin--}}
 
     <table class="table">
         <thead>
         <tr>
             <th scope="col">Naam</th>
-            <th scope="col">Gebouw</th>
+            <th scope="col">Location</th>
         </tr>
         </thead>
         <tbody>
@@ -37,12 +39,17 @@
                     <div class="btn-group">
                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                            selecteer een locatie
+                            @if(isset($user->location_id))
+                                {{$user->location->building}} - {{$user->location->room}}
+                            @else
+                                selecteer een locatie
+                            @endif
                         </button>
                         <div class="dropdown-menu">
                             @foreach($locations as $location)
-                                <a class="dropdown-item" onclick="assignLocation({{$user->id}})"
-                                   href="#">{{$location->building}} - {{$location->room}}</a>
+                                <a class="dropdown-item" onclick="assignLocation({{$location->id}})" href="#">
+                                    {{$location->building}} - {{$location->room}}
+                                </a>
                             @endforeach
                         </div>
                     </div>
@@ -52,7 +59,7 @@
         </tbody>
     </table>
 
-    {{--START Check if the user is admin--}}
+    {{--TODO START Check if the user is admin--}}
     <script>
         function addNewLocation() {
             const name = getValueFromInput('new_name');
@@ -76,16 +83,6 @@
     {{--END Check if the user is admin--}}
 
     <script type="text/javascript">
-        function removeLocation(id) {
-            $.ajax({
-                type: 'DELETE',
-                url: window.location.origin + '/api/items/' + id,
-                success: () => {
-                    window.location.reload();
-                }
-            });
-        }
-
         function assignLocation(id) {
             $.ajax({
                 type: 'PUT',
