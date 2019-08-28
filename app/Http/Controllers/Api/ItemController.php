@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\ItemCreateRequest;
+use App\Http\Requests\ItemUpdateRequest;
 use App\Http\Resources\ItemResource;
 use App\Item;
 use Illuminate\Http\Request;
@@ -18,13 +20,23 @@ class ItemController extends Controller
     }
 
     /**
+     * @param ItemCreateRequest $request
+     * @return ItemResource
+     */
+    public function store(ItemCreateRequest $request)
+    {
+        $create = Item::create($request->validated());
+        return new ItemResource($create);
+    }
+
+    /**
      * @param Request $request
      * @param Item $Item
      * @return ItemResource
      */
-    public function update(Request $request, Item $Item)
+    public function update(ItemUpdateRequest $request, Item $Item)
     {
-        $Item->update($request);
+        $Item->update($request->validated());
         return new ItemResource($Item->refresh());
     }
     /**

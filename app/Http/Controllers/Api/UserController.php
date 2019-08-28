@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
 use App\User;
 use Illuminate\Http\Request;
@@ -18,13 +20,23 @@ class UserController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param UserCreateRequest $request
+     * @return UserResource
+     */
+    public function store(UserCreateRequest $request)
+    {
+        $create = User::create($request->validated());
+        return new UserResource($create);
+    }
+
+    /**
+     * @param UserUpdateRequest $request
      * @param User $user
      * @return UserResource
      */
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
-        $user->update($request);
+        $user->update($request->validated());
         return new UserResource($user->refresh());
     }
     /**

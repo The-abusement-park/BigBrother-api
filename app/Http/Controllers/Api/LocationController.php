@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\LocationCreateRequest;
+use App\Http\Requests\LocationUpdateRequest;
 use App\Http\Resources\LocationResource;
 use App\Location;
 use Illuminate\Http\Request;
@@ -16,15 +18,23 @@ class LocationController extends Controller
     {
         return LocationResource::collection(Location::all());
     }
-
     /**
-     * @param Request $request
+     * @param LocationCreateRequest $request
+     * @return LocationResource
+     */
+    public function store(LocationCreateRequest $request)
+    {
+        $create = Location::create($request->validated());
+        return new LocationResource($create);
+    }
+    /**
+     * @param LocationUpdateRequest $request
      * @param Location $Location
      * @return LocationResource
      */
-    public function update(Request $request, Location $Location)
+    public function update(LocationUpdateRequest $request, Location $Location)
     {
-        $Location->update($request);
+        $Location->update($request->validated());
         return new LocationResource($Location->refresh());
     }
     /**

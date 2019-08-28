@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\RequestCreateRequest;
+use App\Http\Requests\RequestUpdateRequest;
 use App\Http\Resources\RequestResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,16 +18,24 @@ class RequestController extends Controller
     {
         return RequestResource::collection(ModelRequest::all());
     }
-
     /**
-     * @param Request $request
-     * @param ModelRequest $user
-     * @return Request
+     * @param RequestCreateRequest $request
+     * @return RequestResource
      */
-    public function update(Request $request, ModelRequest $user)
+    public function store(RequestCreateRequest $request)
     {
-        $user->update($request);
-        return new Request($user->refresh());
+        $create = ModelRequest::create($request->validated());
+        return new RequestResource($create);
+    }
+    /**
+     * @param RequestUpdateRequest $request
+     * @param ModelRequest $user
+     * @return RequestResource
+     */
+    public function update(RequestUpdateRequest $request, ModelRequest $user)
+    {
+        $user->update($request->validated());
+        return new RequestResource($user->refresh());
     }
 
     /**

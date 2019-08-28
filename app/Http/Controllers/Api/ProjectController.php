@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\ProjectCreateRequest;
+use App\Http\Requests\ProjectUpdateRequest;
 use App\Http\Resources\ProjectResource;
 use App\Project;
 use Illuminate\Http\Request;
@@ -16,15 +18,23 @@ class ProjectController extends Controller
     {
         return ProjectResource::collection(Project::all());
     }
-
+    /**
+     * @param ProjectCreateRequest $request
+     * @return ProjectResource
+     */
+    public function store(ProjectCreateRequest $request)
+    {
+        $create = Project::create($request->validated());
+        return new ProjectResource($create);
+    }
     /**
      * @param Request $request
      * @param Project $Project
      * @return ProjectResource
      */
-    public function update(Request $request, Project $Project)
+    public function update(ProjectUpdateRequest $request, Project $Project)
     {
-        $Project->update($request);
+        $Project->update($request->validated());
         return new ProjectResource($Project->refresh());
     }
     /**
