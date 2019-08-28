@@ -3,6 +3,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" rel="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
