@@ -2,19 +2,21 @@
 
 @section('content')
     <table class="table">
-      <thead>
+        <thead>
         <tr>
-          <th scope="col">Naam</th>
-          <th scope="col">Nummer</th>
-          <th scope="col">Beschrijving</th>
+            <th scope="col">Naam</th>
+            <th scope="col">Nummer</th>
+            <th scope="col">Beschrijving</th>
         </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>dashboard</td>
-          <td>1</td>
-        <td>dashboard ontwikkelen</td>
-        </tr>
-      </tbody>
-  </table>
-@endsection('content')
+        </thead>
+        <tbody>
+        @foreach($projects as $project)
+            <tr>
+                <td>{{$project->name}}</td>
+                <td>{{$project->number}}</td>
+                <td>{{$project->description}}</td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+@endsection()

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Project;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
@@ -13,6 +14,6 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        return view('projects');
+        return view('projects', ['projects' => Project::all()]);
     }
 }

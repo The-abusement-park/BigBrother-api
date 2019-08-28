@@ -2,24 +2,21 @@
 
 @section('content')
     <table class="table">
-      <thead>
+        <thead>
         <tr>
-          <th scope="col">Naam</th>
-          <th scope="col">Telefoonnummer</th>
-          <th scope="col">email</th>
+            <th scope="col">Naam</th>
+            <th scope="col">Telefoonnummer</th>
+            <th scope="col">email</th>
         </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Luke van Lierop</td>
-          <td>0683746383</td>
-        <td>l.vanlierop@avans.nl</td>
-        </tr>
-        <tr>
-          <td>Rick Sieben</td>
-          <td>068573837445</td>
-          <td>r.sieben@avans.nl</td>
-        </tr>
-      </tbody>
-  </table>
+        </thead>
+        <tbody>
+        @foreach($users as $user)
+            <tr>
+                <td>{{$user->name}}</td>
+                <td>{{$user->phone}}</td>
+                <td>{{$user->email}}</td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
 @endsection('content')
