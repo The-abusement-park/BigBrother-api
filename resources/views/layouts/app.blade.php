@@ -23,6 +23,7 @@
                 <a class="nav-link" href="/items">Items</a>
             </li>
         </ul>
+        <a href="{{ route('logout') }}"><button class="btn btn-danger" > logout </button></a>
     </div>
 </nav>
 @if(isset(Auth::user()->id))
@@ -45,7 +46,6 @@
 
         return id;
     }
-
 </script>
 @yield('content')
 </body>
