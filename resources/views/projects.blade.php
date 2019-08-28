@@ -13,9 +13,9 @@
             </thead>
             <tbody>
             <tr>
-                <td><input id="new_name"></td>
-                <td><input id="new_code"></td>
-                <td><input id="new_description"></td>
+                <td><input id="new_name" class="form-control"></td>
+                <td><input id="new_code" class="form-control"></td>
+                <td><input id="new_description" class="form-control"></td>
                 <td>
                     <button onclick="addNewProject()" class="btn btn-success">Toevoegen</button>
                 </td>
@@ -47,7 +47,7 @@
                 </td>
                 @if(!is_user_in_project($project->user) && !is_user_in_any_project($projects))
                     <td>
-                        <button onclick="assignProject({{$project->id}})">Inschrijven</button>
+                        <button  class="btn btn-primary" onclick="assignProject({{$project->id}})">Inschrijven</button>
                     </td>
                 @else
                     <td></td>

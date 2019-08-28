@@ -17,7 +17,7 @@
                 <td><input id="new_building"></td>
                 <td><input id="new_room"></td>
                 <td>
-                    <button onclick="addNewLocation()" class="btn btn-success">Toevoegen</button>
+                    <button class="btn btn-primary"  onclick="addNewLocation()" class="btn btn-success">Toevoegen</button>
                 </td>
             </tr>
             </tbody>
