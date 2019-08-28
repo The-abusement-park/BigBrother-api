@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Location;
+use App\User;
 use Illuminate\Http\Request;
 
 class LocationsController extends Controller
@@ -14,6 +15,6 @@ class LocationsController extends Controller
      */
     public function index()
     {
-        return view('locations', ['locations' => Location::all()]);
+        return view('locations', ['users' => User::all(), 'locations' => Location::all()]);
     }
 }

@@ -38,10 +38,14 @@
                 <td>{{$item->name}}</td>
                 <td>{{$item->serialcode}}</td>
                 <td>{{$item->note}}</td>
-                <td>{{$item->user->name}}</td>
+                @if(isset($item->user->name))
+                    <td>{{$item->user->name}}</td>
+                @else
+                    <td></td>
+                @endif
                 <td>
-                    <button>Verwijderen</button>
-                    <button>Toewijzen aan mij</button>
+                    <button onclick="removeItem({{$item->id}})">Verwijderen</button>
+                    <button onclick="assignItem({{$item->id}})">Toewijzen aan mij</button>
                 </td>
             </tr>
         @endforeach
@@ -56,20 +60,39 @@
 
             $.ajax({
                 type: 'POST',
-                url: window.location.origin + 'api/users',
-                data: JSON.stringify({
+                url: window.location.origin + '/api/items',
+                data: {
                     name: name,
-                    code: code,
+                    serialcode: code,
                     note: note
-                }),
+                },
                 success: () => {
                     window.location.reload();
                 }
             });
         }
 
-        function getValueFromInput(id){
-            return document.getElementById(id).value;
+        function removeItem(id) {
+            $.ajax({
+                type: 'DELETE',
+                url: window.location.origin + '/api/items/' + id,
+                success: () => {
+                    window.location.reload();
+                }
+            });
+        }
+
+        function assignItem(id) {
+            $.ajax({
+                type: 'PUT',
+                url: window.location.origin + '/api/items/' + id,
+                data: {
+                    'user_id': 1
+                },
+                success: () => {
+                    window.location.reload();
+                }
+            });
         }
     </script>
 @endsection

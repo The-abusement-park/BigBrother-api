@@ -17,6 +17,6 @@ class RequestResource extends JsonResource
         return [
             'id' => $this->id,
             'description' => $this->description,
-            'user' => $this->user(),
+            'user' => $this->whenLoaded("user"),
         ];    }
 }
