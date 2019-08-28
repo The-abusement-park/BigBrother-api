@@ -2,7 +2,7 @@
 <head>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" rel="text/javascript"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -29,6 +29,26 @@
         </form>
     </div>
 </nav>
+@if(isset(Auth::user()->id))
+    <data style="display: none" data-id="{{}}" id="userId"></data>
+@endif
+<script type="text/javascript">
+    function getValueFromInput(id) {
+        return document.getElementById(id).value;
+    }
+
+    function getUserId() {
+        let id = document.getElementById('userId');
+
+        try {
+            id.getAttribute('data-id');
+        } catch {
+            throw new Error('Not permitted');
+        }
+
+        return id;
+    }
+</script>
 @yield('content')
 </body>
 </html>

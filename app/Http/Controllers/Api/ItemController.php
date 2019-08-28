@@ -39,6 +39,7 @@ class ItemController extends Controller
         $Item->update($request->validated());
         return new ItemResource($Item->refresh());
     }
+
     /**
      * @param Item $Item
      * @return ItemResource

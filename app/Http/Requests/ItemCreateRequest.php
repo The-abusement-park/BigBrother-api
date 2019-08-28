@@ -16,8 +16,7 @@ class ItemCreateRequest extends FormRequest
         return [
             "name" => "required",
             "serialcode" => "required",
-            "note" => "required",
-            "user_id" => "sometimes",
+            "note" => "required"
         ];
     }
 }
