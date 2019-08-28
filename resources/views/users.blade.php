@@ -19,4 +19,4 @@
         @endforeach
         </tbody>
     </table>
-@endsection('content')
+@endsection
