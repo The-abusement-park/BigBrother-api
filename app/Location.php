@@ -18,9 +18,10 @@ class Location extends Model
     ];
 
     /**
-     * Get the project for the location.
+     * Get the user for the location.
      */
-    public function user(){
-        $this->hasOne(Project::class, 'project_id');
+    public function user()
+    {
+        $this->hasOne(User::class);
     }
 }
