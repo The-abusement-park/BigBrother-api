@@ -39,9 +39,11 @@
                 <td>{{$project->name}}</td>
                 <td>{{$project->number}}</td>
                 <td>{{$project->description}}</td>
-                <td>
-                    <button onclick="assignProject({{$project->id}})">Inschrijven</button>
-                </td>
+                @if(!is_user_in_project($project->user))
+                    <td>
+                        <button onclick="assignProject({{$project->id}})">Inschrijven</button>
+                    </td>
+                @endif
             </tr>
         @endforeach
         </tbody>
@@ -75,7 +77,7 @@
             $.ajax({
                 type: 'PUT',
                 // url: window.location.origin + '/api/users/' + getUserId(),
-                url: window.location.origin + '/api/users/' + 1,
+                url: window.location.origin + '/api/users/' + 2,
                 data: {
                     'project_id': id
                 },

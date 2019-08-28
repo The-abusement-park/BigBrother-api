@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command(function () {
+        $schedule->call(function () {
             $users = User::all();
             foreach ($users as $user) {
                 $user->update(['location_id' => null]);
