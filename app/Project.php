@@ -18,10 +18,10 @@ class Project extends Model
     ];
 
     /**
-     * Get the users for the project.
+     * Get the user for the location.
      */
-    public function users()
+    public function user()
     {
-        return $this->hasMany(User::class, 'user_id');
+        return $this->hasOne(User::class);
     }
 }
