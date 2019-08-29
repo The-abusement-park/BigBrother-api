@@ -27,9 +27,11 @@
                 <a class="nav-link" href="/items">Items</a>
             </li>
         </ul>
+        @if(isset(Auth::user()->id))
         <a href="{{ route('logout') }}">
-            <button class="btn btn-danger"> logout</button>
+            <button class="btn btn-danger">Uitloggen</button>
         </a>
+        @endif
     </div>
 </nav>
 @if(isset(Auth::user()->id))
