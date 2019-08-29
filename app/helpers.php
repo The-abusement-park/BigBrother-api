@@ -30,5 +30,8 @@ function is_admin()
 
 function get_user_id()
 {
-    return Auth::user()->id;
+    if (!isset(Auth::user()->id))
+        return -1;
+    else
+        return Auth::user()->id;
 }
