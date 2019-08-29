@@ -5,7 +5,6 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Naam</th>
                 <th scope="col">Gebouw</th>
                 <th scope="col">Ruimte</th>
                 <th scope="col">Actie</th>
@@ -13,9 +12,8 @@
             </thead>
             <tbody>
             <tr>
-                <td><input id="new_name"></td>
-                <td><input id="new_building"></td>
-                <td><input id="new_room"></td>
+                <td><input id="new_building" class="form-control"></td>
+                <td><input id="new_room" class="form-control"></td>
                 <td>
                     <button onclick="addNewLocation()" class="btn btn-success">Toevoegen</button>
                 </td>
@@ -37,14 +35,22 @@
                 <td>{{$user->name}}</td>
                 <td>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                            @if(isset($user->location_id))
+                        @if($user-> id == get_user_id())
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                @if(isset($user->location))
+                                    {{$user->location->building}} - {{$user->location->room}}
+                                @else
+                                    Selecteer een locatie
+                                @endif
+                            </button>
+                        @else
+                            @if(isset($user->location))
                                 {{$user->location->building}} - {{$user->location->room}}
                             @else
-                                selecteer een locatie
+                                Geen locatie opgegeven
                             @endif
-                        </button>
+                        @endif
                         <div class="dropdown-menu">
                             @foreach($locations as $location)
                                 <a class="dropdown-item" onclick="assignLocation({{$location->id}})" href="#">
@@ -86,7 +92,7 @@
         function assignLocation(id) {
             $.ajax({
                 type: 'PUT',
-                url: window.location.origin + '/api/users/' + getUserId(),
+                url: window.location.origin + '/api/users/' + a(),
                 data: {
                     'location_id': id
                 },

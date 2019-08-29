@@ -6,7 +6,11 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="/">Budget BV Dashboard</a>
+    <a class="navbar-brand" href="#">Budget BV Dashboard</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -31,22 +35,13 @@
 @if(isset(Auth::user()->id))
     <data style="display: none" data-id="{{Auth::user()->id}}" id="userId"></data>
 @endif
-<a style="position: absolute; bottom: 0; left: 0; margin:0; font-size: 10px; color: white" id="error"></a>
 <script type="text/javascript">
     function getValueFromInput(id) {
         return document.getElementById(id).value;
     }
 
-    function getUserId() {
-        let id = document.getElementById('userId');
-
-        try {
-            id = id.getAttribute('data-id');
-        } catch {
-            throw new Error('Not permitted');
-        }
-
-        return id;
+    function a() {
+        return {{get_user_id()}};
     }
 </script>
 @yield('content')
