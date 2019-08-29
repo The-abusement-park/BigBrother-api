@@ -8,5 +8,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/locations', 'LocationsController@index');
     Route::get('/projects', 'ProjectsController@index');
     Route::get('/users', 'UsersController@index');
+    Route::get('/purchase', 'PurchaseController@index');
     Route::get('', 'ProjectsController@index');
 });
