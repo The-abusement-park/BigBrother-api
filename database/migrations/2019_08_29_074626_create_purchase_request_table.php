@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRequestTable extends Migration
+class CreatePurchaseRequestTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateRequestTable extends Migration
      */
     public function up()
     {
-        Schema::create('request', function (Blueprint $table) {
+        Schema::create('purchase_request', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string("description");
+            $table->string('name');
+            $table->string('description');
+            $table->integer('quantity');
+            $table->double('price');
             $table->string("status")->default("In behandeling");
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
@@ -30,6 +33,6 @@ class CreateRequestTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('request');
+        Schema::dropIfExists('purchase_request');
     }
 }

@@ -4,12 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Request extends Model
+class borrowRequest extends Model
 {
-    protected $table = 'request';
-
     protected $fillable = [
-        'description', 'status', 'user_id',
+        'name', 'status', 'description', 'borrowedFrom', 'quantity', 'status', 'user_id',
     ];
 
     /**

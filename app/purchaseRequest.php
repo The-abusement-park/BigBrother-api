@@ -4,12 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Request extends Model
+class purchaseRequest extends Model
 {
-    protected $table = 'request';
-
     protected $fillable = [
-        'description', 'status', 'user_id',
+        'name', 'status', 'description', 'price', 'quantity', 'status', 'user_id',
     ];
 
     /**
