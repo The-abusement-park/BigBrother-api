@@ -19,4 +19,6 @@ Route::namespace('Api')->name('api.')->group(function () {
     Route::apiResource('requests', 'RequestController');
     Route::apiResource('items', 'ItemController');
     Route::apiResource('projects', 'ProjectController');
+    Route::apiResource('borrow', 'borrowRequestController');
+    Route::apiResource('purchase', 'purchaseRequestController');
 });
