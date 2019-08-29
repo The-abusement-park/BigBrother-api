@@ -27,3 +27,8 @@ function is_admin()
 {
     return Auth::user()->role == 'Admin' || Auth::user()->role == 'SuperAdmin';
 }
+
+function get_user_id()
+{
+    return Auth::user()->id;
+}

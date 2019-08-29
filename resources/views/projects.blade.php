@@ -13,9 +13,9 @@
             </thead>
             <tbody>
             <tr>
-                <td><input id="new_name"></td>
-                <td><input id="new_code"></td>
-                <td><input id="new_description"></td>
+                <td><input id="new_name" class="form-control"></td>
+                <td><input id="new_code" class="form-control"></td>
+                <td><input id="new_description" class="form-control"></td>
                 <td>
                     <button onclick="addNewProject()" class="btn btn-success">Toevoegen</button>
                 </td>
@@ -84,7 +84,7 @@
         function assignProject(id) {
             $.ajax({
                 type: 'PUT',
-                url: window.location.origin + '/api/users/' + getUserId(),
+                url: window.location.origin + '/api/users/' + a(),
                 data: {
                     'project_id': id
                 },

@@ -12,9 +12,9 @@
         </thead>
         <tbody>
         <tr>
-            <td><input id="new_name"></td>
-            <td><input id="new_code"></td>
-            <td><input id="new_note"></td>
+            <td><input id="new_name" class="form-control"></td>
+            <td><input id="new_code" class="form-control"></td>
+            <td><input id="new_note" class="form-control"></td>
             <td>
                 <button onclick="addNewItem()" class="btn btn-success">Toevoegen</button>
             </td>
@@ -44,8 +44,8 @@
                     <td></td>
                 @endif
                 <td>
-                    <button onclick="removeItem({{$item->id}})">Verwijderen</button>
-                    <button onclick="assignItem({{$item->id}})">Toewijzen aan mij</button>
+                    <button onclick="removeItem({{$item->id}})" class="btn btn-danger">Verwijderen</button>
+                    <button onclick="assignItem({{$item->id}})" class="btn btn-primary">Toewijzen aan mij</button>
                 </td>
             </tr>
         @endforeach
@@ -87,7 +87,7 @@
                 type: 'PUT',
                 url: window.location.origin + '/api/items/' + id,
                 data: {
-                    'user_id': getUserId()
+                    'user_id': a()
                 },
                 success: () => {
                     window.location.reload();
