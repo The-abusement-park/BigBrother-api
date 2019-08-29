@@ -46,6 +46,9 @@
                 <td>
                     <button onclick="removeItem({{$item->id}})" class="btn btn-danger">Verwijderen</button>
                     <button onclick="assignItem({{$item->id}})" class="btn btn-primary">Toewijzen aan mij</button>
+                    @if(isset($item->user->id))
+                        <button onclick="assignItem({{$item->id}}, null)" class="btn btn-primary">Terugleggen</button>
+                    @endif
                 </td>
             </tr>
         @endforeach
@@ -82,12 +85,17 @@
             });
         }
 
-        function assignItem(id) {
+        function assignItem(id, custom) {
+            let user_id = a();
+
+            if(custom !== undefined)
+                user_id = custom;
+
             $.ajax({
                 type: 'PUT',
                 url: window.location.origin + '/api/items/' + id,
                 data: {
-                    'user_id': a()
+                    'user_id': user_id
                 },
                 success: () => {
                     window.location.reload();

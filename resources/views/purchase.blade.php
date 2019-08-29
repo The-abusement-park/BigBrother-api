@@ -66,8 +66,9 @@
     <script type="text/javascript">
         function addNewItem() {
             const name = getValueFromInput('new_name');
-            const code = getValueFromInput('new_code');
-            const note = getValueFromInput('new_note');
+            const price = getValueFromInput('new_code');
+            const description = getValueFromInput('new_note');
+            const amount = getValueFromInput('new_note');
 
             $.ajax({
                 type: 'POST',
