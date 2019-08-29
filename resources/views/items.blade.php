@@ -47,7 +47,7 @@
                     <button onclick="removeItem({{$item->id}})" class="btn btn-danger">Verwijderen</button>
                     <button onclick="assignItem({{$item->id}})" class="btn btn-primary">Toewijzen aan mij</button>
                     @if(isset($item->user->id))
-                        <button onclick="assignItem({{$item->id}}, null)" class="btn btn-primary">Terugleggen</button>
+                        <button onclick="assignItem('{{$item->id}}', null)" class="btn btn-primary">Terugleggen</button>
                     @endif
                 </td>
             </tr>
