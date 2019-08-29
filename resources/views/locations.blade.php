@@ -68,7 +68,6 @@
     @if(is_admin())
         <script>
             function addNewLocation() {
-                const name = getValueFromInput('new_name');
                 const building = getValueFromInput('new_building');
                 const room = getValueFromInput('new_room');
 
@@ -76,7 +75,6 @@
                     type: 'POST',
                     url: window.location.origin + '/api/locations',
                     data: {
-                        name: name,
                         building: building,
                         room: room
                     },

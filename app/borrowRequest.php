@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class borrowRequest extends Model
 {
+    protected $table = 'borrow_request';
+
     protected $fillable = [
         'name', 'status', 'description', 'borrowedFrom', 'quantity', 'status', 'user_id',
     ];

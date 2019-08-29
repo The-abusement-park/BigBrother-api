@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class purchaseRequest extends Model
 {
+    protected $table = 'purchase_request';
+
     protected $fillable = [
-        'name', 'status', 'description', 'price', 'quantity', 'status', 'user_id',
+        'name', 'status', 'description', 'price', 'quantity', 'user_id',
     ];
 
     /**

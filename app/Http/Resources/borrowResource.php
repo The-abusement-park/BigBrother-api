@@ -14,6 +14,13 @@ class borrowResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+//            'users' => $this->whenLoaded("users"),
+            'quantity' => $this->quantity,
+            'borrowedFrom' => $this->borrowedFrom
+        ];
     }
 }
