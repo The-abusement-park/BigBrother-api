@@ -47,7 +47,7 @@
                 </td>
                 @if(!is_user_in_project($project->user) && !is_user_in_any_project($projects))
                     <td>
-                        <button onclick="assignProject({{$project->id}})">Inschrijven</button>
+                        <button onclick="assignProject({{$project->id}})" class="btn btn-primary">Inschrijven</button>
                     </td>
                 @else
                     <td></td>

@@ -45,7 +45,9 @@
                 @endif
                 <td>
                     <button onclick="removeItem({{$item->id}})" class="btn btn-danger">Verwijderen</button>
-                    <button onclick="assignItem({{$item->id}})" class="btn btn-primary">Toewijzen aan mij</button>
+                    @if(!isset($item->user->id) || $item->user->id != get_user_id())
+                        <button onclick="assignItem({{$item->id}})" class="btn btn-primary">Toewijzen aan mij</button>
+                    @endif
                     @if(isset($item->user->id) && $item->user->id == get_user_id())
                         <button onclick="assignItem('{{$item->id}}', null)" class="btn btn-primary">Terugleggen</button>
                     @endif
@@ -88,7 +90,7 @@
         function assignItem(id, custom) {
             let user_id = a();
 
-            if(custom !== undefined)
+            if (custom !== undefined)
                 user_id = custom;
 
             $.ajax({
